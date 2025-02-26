@@ -1,0 +1,20 @@
+[
+    {
+        "titulo": "Don Quijote (Edici\u00f3n Revisada)",
+        "autor": "Miguel de Cervantes",
+        "anyo": 1615,
+        "paginas": 350
+    },
+    {
+        "titulo": "El Conde de Montecristo",
+        "autor": "Alejandro Dumas",
+        "anyo": 1328,
+        "paginas": 1300
+    },
+    {
+        "titulo": "IT",
+        "autor": "Stephen King",
+        "anyo": 1987,
+        "paginas": 1502
+    }
+]

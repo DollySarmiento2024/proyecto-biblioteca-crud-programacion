@@ -28,6 +28,20 @@ class Revista extends Libro
         $this->tematica = $tematica;
 
     }
+
+    public function toArray(): array {
+        return [
+            'titulo'=> $this->titulo,
+            'autor'=> $this->autor,
+            'anyo'=> $this->anyo,
+            'paginas'=>$this->paginas,
+            'tematica'=>$this->tematica
+        ];
+    }
+
+    public static function fromArray(array $data): Revista {
+        return new Revista($data['titulo'], $data['autor'], $data['anyo'], $data['paginas'], $data['tematica']);
+    }
    
 }
 

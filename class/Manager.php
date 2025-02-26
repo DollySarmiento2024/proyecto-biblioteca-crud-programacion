@@ -1,5 +1,4 @@
 <?php
-
 require_once("Libro.php");
 require_once("Revista.php");
 
@@ -8,21 +7,59 @@ class Manager
 {
     private array $libros = [];
     private array $revistas = [];
-   
-    //Crear: Agregar un libro
+    private string $filePathLibros = 'datos_libros.json';
+    private string $filePathRevistas = 'datos_revistas.json';
+
+    public function __construct()
+    {
+        $this->cargarLibros();
+        $this->cargarRevistas();
+    }
+
+    private function cargarLibros(): void
+    {
+        $data = null;
+        if (file_exists($this->filePathLibros)) {
+            $data = json_decode(file_get_contents($this->filePathLibros), true);
+        }
+        if ($data != null && is_array($data)) {
+            foreach ($data as $array) {
+                $this->libros[] = Libro::fromArray($array);
+            }
+        }
+    }
+
+    /*-----------------------------------------------------------------------*/
+
+    private function cargarRevistas(): void
+    {
+        $data = null;
+        if (file_exists($this->filePathRevistas)) {
+            $data = json_decode(file_get_contents($this->filePathRevistas), true);
+        }
+        if ($data != null && is_array($data)) {
+            foreach ($data as $array) {
+                $this->revistas[] = Revista::fromArray($array);
+            }
+        }
+    }
+
+    /*-----------------------------------------------------------------------*/
+
     public function crearLibro(string $titulo, string $autor, int $anyo, int $paginas): void
     {
         $libro = new Libro($titulo, $autor, $anyo, $paginas);
         $this->libros[] = $libro;
-        echo "Libro '$titulo' agregado correctamente . <br>";
+        $this->guardarLibros();
     }
 
-    //Crear: Agregar una revista
+    /*-----------------------------------------------------------------------*/
+
     public function crearRevista(string $titulo, string $autor, int $anyo, int $paginas, string $tematica): void
     {
         $revista = new Revista($titulo, $autor, $anyo, $paginas, $tematica);
         $this->revistas[] = $revista;
-        echo "Revista '$titulo' agregado correctamente . <br>";
+        $this->guardarRevistas();
     }
 
     //leer: listar todos los libros
@@ -67,6 +104,8 @@ class Manager
         $libro->setAnyo($newAnyo);
         $libro->setPaginas($newPaginas);
         echo "Libro actualizado correctamente . <br>";
+        $this->guardarLibros();
+
     }
 
     // actualizar: Modificar una revista por índice
@@ -84,33 +123,55 @@ class Manager
         $revista->setPaginas($newPaginas);
         $revista->setTematica($newTematica);
         echo "Revista actualizada correctamente . <br>";
+        $this->guardarRevistas();
     }
 
-    //Delete:Eliminar un libro por índice
+    /*-----------------------------------------------------------------------*/
+    
     public function eliminarLibro(int $index): void
     {
-        if (!isset($this->libros[$index])) {
-            echo "Libro no encontrado.<br>";
-            return;
+        if (isset($this->libros[$index])) 
+        {
+            unset($this->libros[$index]);
+            $this->libros = array_values($this->libros);
+            $this->guardarLibros();
         }
-
-        $eliminarLibro = $this->libros[$index]->getTitulo();
-        unset($this->libros[$index]);
-        $this->libros = array_values($this->libros); // Reindexar array
-        echo "Libro '$eliminarLibro' eliminado correctamente . <br>";
     }
 
-    //Delete:Eliminar un libro por índice
+    /*-----------------------------------------------------------------------*/
+    
     public function eliminarRevista(int $index): void
     {
-        if (!isset($this->revistas[$index])) {
-            echo "Revista no encontrada.<br>";
-            return;
+        if (isset($this->revistas[$index])) 
+        {
+            unset($this->revistas[$index]);
+            $this->revistas = array_values($this->revistas);
+            $this->guardarRevistas();
         }
+    }
 
-        $eliminarRevista = $this->revistas[$index]->getTitulo();
-        unset($this->revistas[$index]);
-        $this->revistas = array_values($this->revistas); // Reindexar array
-        echo "Revista '$eliminarRevista' eliminado correctamente . <br>";
+    /*-----------------------------------------------------------------------*/
+
+    private function guardarLibros(): void
+    {
+        $jsonBiblio = [];
+        foreach ($this->libros as $object) {
+            $arrayLibro = $object->toArray();
+            $jsonBiblio[] = $arrayLibro;
+        }
+        $jsonBiblio = json_encode($jsonBiblio, JSON_PRETTY_PRINT);
+        file_put_contents($this->filePathLibros, $jsonBiblio);
+    }
+
+    /*-----------------------------------------------------------------------*/
+    private function guardarRevistas(): void
+    {
+        $jsonBiblio = [];
+        foreach ($this->revistas as $object) {
+            $arrayRevista = $object->toArray();
+            $jsonBiblio[] = $arrayRevista;
+        }
+        $jsonBiblio = json_encode($jsonBiblio, JSON_PRETTY_PRINT);
+        file_put_contents($this->filePathRevistas, $jsonBiblio);
     }
 }
