@@ -1,23 +1,23 @@
 [
     {
-        "titulo": "El papel de la gamificaci\u00f3n en la motivaci\u00f3n estudiantil (segunda edici\u00f3n)",
-        "autor": "Rodr\u00edguez, A. & P\u00e9rez",
-        "anyo": 2024,
-        "paginas": 260,
-        "tematica": "psicolog\u00eda"
-    },
-    {
-        "titulo": "\u00cdnsula: Revista de Letras y Ciencias Humanas",
-        "autor": "Enrique Canito",
-        "anyo": 1946,
-        "paginas": 32,
-        "tematica": "literatura"
-    },
-    {
         "titulo": "Letras Libres",
         "autor": "Enrique Krauze",
         "anyo": 1999,
         "paginas": 100,
         "tematica": "entrevistas"
+    },
+    {
+        "titulo": "The Effect of Neuromarketing Techniques on Consumer Behavior",
+        "autor": "Ariely, D. & Berns",
+        "anyo": 2010,
+        "paginas": 233,
+        "tematica": "Neuromarketing"
+    },
+    {
+        "titulo": "The Effect of Neuromarketing Techniques on Consumer Behavior",
+        "autor": "Ariely, D. & Berns",
+        "anyo": 2010,
+        "paginas": 233,
+        "tematica": "Neuromarketing"
     }
 ]

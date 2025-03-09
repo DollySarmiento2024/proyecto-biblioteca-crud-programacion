@@ -4,90 +4,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio AP63 CRUD Biblioteca II</title>
+    <title>Ejercicio AP63 CRUD</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <form class="agregar-form" action="" method="post">
+        <input type="hidden" name="action" value="add">
+
+        <h1>Gestor de Bibliotecas</h1>
+        <h2>Añadir publicaciones (libro o revistas)</h2>
+
+        <div>
+            <label for="categoria">Selecciona:</label>
+            <input type="radio" name="categoria" value="libro" checked>Libro
+            <input type="radio" name="categoria" value="revista">Revista
+        </div>
+
+        <div>
+            <label for="titulo">Titulo:</label>
+            <input class="input_text" type="text" name="titulo" id="titulo" required>
+        </div>
+        <div>
+            <label for="autor">Autor:</label>
+            <input class="input_text" type="text" name="autor" id="autor" required>
+        </div>
+        <div>
+            <label for="anyo">Año:</label>
+            <input class="input_text" type="number" name="anyo" id="anyo" min="0" minlength="4" required>
+        </div>
+        <div>
+            <label for="paginas">Paginas:</label>
+            <input class="input_text" type="number" name="paginas" id="paginas" min="0" required>
+        </div>
+        <div>
+            <label for="tematica">Tematica:</label>
+            <input class="input_text" type="text" name="tematica" id="tematica">
+        </div>
+        <div>
+            <input class="button" type="submit" name="agregar" value="Añadir publicación">
+        </div>
+    </form>
 
     <?php
     require_once("./class/Manager.php");
-
-    //ejemplo de uso
-    echo "---Sistema de Gestión de Libros y revistas ----<br><br>";
+    echo "<h2>Sistema de Gestión de Libros y revistas </h2>";
     $manager = new Manager();
 
-    echo "---LIBROS: ----<br><br>";
+    echo "<h2>Listado de Libros</h2>";
 
-    $manager->crearLibro("Cien Años de Soledad", "Gabriel García Márquez", 1967, 220);
-    $manager->crearLibro("Don Quijote de la Mancha", "Miguel de Cervantes", 1605, 450);
-    $manager->crearLibro("El Conde de Montecristo", "Alejandro Dumas", 1328, 1300);
-    $manager->crearLibro("IT", "Stephen King", 1987, 1502);
+    if (count($manager->leerLibros()) == 0) {
+        echo "<p>No hay Libros registrados.</p>";
+    } else {
+        echo "<ul>";
+        foreach ($manager->leerLibros() as $index => $libro) {
+            echo "<li>";
+            echo "<p>Titulo: " . $libro->getTitulo() . ", Autor: " . $libro->getAutor() . "Anyo: " . $libro->getAnyo() . "</p>";
+            echo "<form method='POST' class='eliminar-form'>
+                        <input type='hidden' name='action' value='delete'>
+                        <input type='hidden' name='categoria' value='libro'>
+                        <input type='hidden' name='index' value='" . $index . "'>
+                        <input class='button' type='submit' name='eliminar' value='Eliminar'>
+                    </form>";
+            echo "</li>";
+        }
+        echo "</ul>";
+    }
+
+    echo "<h2>Listado de Revista</h2>";
+    if (count($manager->leerRevistas()) == 0) {
+        echo "<p>No hay revistas registrados</p>";
+    } else {
+        echo "<ul>";
+        foreach ($manager->leerRevistas() as $index => $revista) {
+            echo "<li>";
+            echo "<p>Titulo:" . $revista->getTitulo() . ", Autor: " . $revista->getAutor() . "Anyo: " . $revista->getAnyo() . "Tematica: " . $revista->getTematica() . "</p>";
+            echo "<form method='POST' class='eliminar-form'>
+                            <input type='hidden' name='action' value='delete'>
+                            <input type='hidden' name='categoria' value='revista'>
+                            <input type='hidden' name='index' value='" . $index . "'>
+                            <input class='button' type='submit' name='eliminar' value='Eliminar'>
+                        </form>";
+            echo "</li>";
+        }
+        echo "</ul>";
+    }
+
+    /* echo "<article>";
+    echo "<h3>LIBROS:</h3>";
     $manager->leerLibros();
-
-    $manager->actualizarLibro(1, "Don Quijote (Edición Revisada)", "Miguel de Cervantes", 1615,350);
-    $manager->leerLibros();
-
-    $manager->eliminarLibro(index: 0);
-    $manager->leerLibros();
-
-    /*----------------------------------------------------------------------------------------------------------*/
-    echo "<br>---REVISTAS: ----<br><br>";
-
-    $manager->crearRevista("The Effect of Neuromarketing Techniques on Consumer Behavior", "Ariely, D. & Berns, G. S.", 2010, 233, "Neuromarketing");
-    $manager->crearRevista("El papel de la gamificación en la motivación estudiantil", "Rodríguez, A. & Pérez, C.", 2019, 180, "Pedagogía y Tecnología");
-    $manager->crearRevista("Ínsula: Revista de Letras y Ciencias Humanas", "Enrique Canito", 1946, 32,"literatura");
-    $manager->crearRevista("Letras Libres", "Enrique Krauze", 1999, 100,"entrevistas");
+    echo "</article>";
+   
+    echo "<article>";
+    echo "<h3>REVISTAS:</h3>";
     $manager->leerRevistas();
+    echo "</article>"; */
 
-    $manager->actualizarRevista(1, "El papel de la gamificación en la motivación estudiantil (segunda edición)", "Rodríguez, A. & Pérez", 2024, 260, "psicología");
-    $manager->leerRevistas();
+    if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['action'])) {
+        $action = $_POST['action'] ?? '';
 
-    $manager->eliminarRevista(0);
-    $manager->leerRevistas();
-
-    /*
-    http://localhost:8080/Proyecto_github_CRUD_Biblioteca_PHP/
-    ---Sistema de Gestión de Libros y revistas ----
-
-    ---LIBROS: ----
-
-    Listado de libros:
-    1. Título: Cien Años de Soledad, AutorGabriel García Márquez, Año: 1967, Paginas: 220
-    2. Título: Don Quijote de la Mancha, AutorMiguel de Cervantes, Año: 1605, Paginas: 450
-    3. Título: El Conde de Montecristo, AutorAlejandro Dumas, Año: 1328, Paginas: 1300
-    4. Título: IT, AutorStephen King, Año: 1987, Paginas: 1502
-    Libro actualizado correctamente .
-    Listado de libros:
-    1. Título: Cien Años de Soledad, AutorGabriel García Márquez, Año: 1967, Paginas: 220
-    2. Título: Don Quijote (Edición Revisada), AutorMiguel de Cervantes, Año: 1615, Paginas: 350
-    3. Título: El Conde de Montecristo, AutorAlejandro Dumas, Año: 1328, Paginas: 1300
-    4. Título: IT, AutorStephen King, Año: 1987, Paginas: 1502
-    Listado de libros:
-    1. Título: Don Quijote (Edición Revisada), AutorMiguel de Cervantes, Año: 1615, Paginas: 350
-    2. Título: El Conde de Montecristo, AutorAlejandro Dumas, Año: 1328, Paginas: 1300
-    3. Título: IT, AutorStephen King, Año: 1987, Paginas: 1502
-
-    ---REVISTAS: ----
-
-    Listado de revistas:
-    1. Título: The Effect of Neuromarketing Techniques on Consumer Behavior, AutorAriely, D. & Berns, G. S., Año: 2010, Paginas: 233, Tematica: Neuromarketing
-    2. Título: El papel de la gamificación en la motivación estudiantil, AutorRodríguez, A. & Pérez, C., Año: 2019, Paginas: 180, Tematica: Pedagogía y Tecnología
-    3. Título: Ínsula: Revista de Letras y Ciencias Humanas, AutorEnrique Canito, Año: 1946, Paginas: 32, Tematica: literatura
-    4. Título: Letras Libres, AutorEnrique Krauze, Año: 1999, Paginas: 100, Tematica: entrevistas
-    Revista actualizada correctamente .
-    Listado de revistas:
-    1. Título: The Effect of Neuromarketing Techniques on Consumer Behavior, AutorAriely, D. & Berns, G. S., Año: 2010, Paginas: 233, Tematica: Neuromarketing
-    2. Título: El papel de la gamificación en la motivación estudiantil (segunda edición), AutorRodríguez, A. & Pérez, Año: 2024, Paginas: 260, Tematica: psicología
-    3. Título: Ínsula: Revista de Letras y Ciencias Humanas, AutorEnrique Canito, Año: 1946, Paginas: 32, Tematica: literatura
-    4. Título: Letras Libres, AutorEnrique Krauze, Año: 1999, Paginas: 100, Tematica: entrevistas
-    Listado de revistas:
-    1. Título: El papel de la gamificación en la motivación estudiantil (segunda edición), AutorRodríguez, A. & Pérez, Año: 2024, Paginas: 260, Tematica: psicología
-    2. Título: Ínsula: Revista de Letras y Ciencias Humanas, AutorEnrique Canito, Año: 1946, Paginas: 32, Tematica: literatura
-    3. Título: Letras Libres, AutorEnrique Krauze, Año: 1999, Paginas: 100, Tematica: entrevistas
-        */
+        switch ($action) {
+            
+            //AGREGAR
+            case 'add':
+                $titulo = $_POST['titulo'] ?? '';
+                $autor = $_POST["autor"] ?? '';
+                $anyo = (int)($_POST["anyo"] ?? 0);
+                $paginas = (int)($_POST["paginas"] ?? 0);
+                $tematica = $_POST["tematica"] ?? '';
+                $categoria = $_POST["categoria"] ?? '';
 
 
+                if (!empty($titulo) && !empty($autor) && !empty($anyo) && !empty($paginas)) {
+                    switch ($categoria) {
+                        case 'revista':
+                            if (!empty($tematica)) {
+                                $manager->crearRevista($titulo, $autor, $anyo, $paginas, $tematica);
+                            } else {
+                                echo "<p>Por favor, completa todos los campos correctamente.<p>";
+                            }
+                            break;
+                        case 'libro':
+                            $manager->crearLibro($titulo, $autor, $anyo, $paginas);
+                            break;
+                    }
+                } else {
+                    echo "<p>Por favor, completa todos los campos correctamente.<p>";
+                }
+                break;
+
+            //ELIMINAR
+            case 'delete':
+                $index = (int)($_POST['index'] ?? -1);
+                if ($index >= 0) {
+                    if (isset($_POST['categoria']) && $_POST['categoria'] == 'libro') {
+                        $manager->eliminarLibro($index);
+                        echo "<p>Libro eliminado correctamente.</p>";
+                    } else {
+                        $manager->eliminarRevista($index);
+                        echo "<p>Revista eliminada correctamente.</p>";
+                    }
+                }
+                break;
+        }
+    }
+
+    /* http://localhost:8080/AP63_Formulario */
     ?>
 </body>
-
 </html>
+
+<!-- 
+LIBROS
+1. Título: Cien Años de Soledad, Autor: Gabriel García Márquez, Año: 1967, paginas: 496
+2. Título: Don Quijote de la Mancha, Autor: Miguel de Cervantes, Año: 1605, paginas: 462  
+
+REVISTAS
+1. Título: "Letras Libres", autor: "Enrique Krauze", Año: 1999, paginas: 100, tematica: "entrevistas"
+2. Título: "The Effect of Neuromarketing Techniques on Consumer Behavior", Autor: "Ariely, D. & Berns", anyo: 2010, "paginas": 233, tematica: "Neuromarketing"
+
+-->

@@ -63,38 +63,51 @@ class Manager
     }
 
     //leer: listar todos los libros
-    public function leerLibros(): void
+    /* public function leerLibros(): void
     {
         if (empty($this->libros)) {
-            echo "No hay libros registrados . <br>";
+            echo "No hay libros registrados";
             return;
         }
 
-        echo "Listado de libros: <br>";
+        //echo "Listado de libros: <br>";
+        echo "<ul>";
         foreach ($this->libros as $index => $libro) {
-            echo ($index + 1) . ". Título: " . $libro->getTitulo() . ", Autor" . $libro->getAutor() . ", Año: " . $libro->getAnyo() . ", Paginas: " . $libro->getPaginas() . "<br>";
+            echo "<li>" . ($index + 1) . " . Título: " . $libro->getTitulo() . ", Autor:" . $libro->getAutor() . ", Año: " . $libro->getAnyo() . ", Paginas: " . $libro->getPaginas() . "</li>";
         }
+        echo "</ul>";
+        
+    } */
+
+    public function leerLibros(){
+        return $this->libros; 
     }
 
     //leer: listar todos las revistas
-    public function leerRevistas(): void
+    /* public function leerRevistas(): void
     {
         if (empty($this->revistas)) {
-            echo "No hay revistas registradas . <br>";
+            echo "No hay revistas registradas";
             return;
         }
 
-        echo "Listado de revistas: <br>";
+        //echo "Listado de revistas: <br>";
+        echo "<ul>";
         foreach ($this->revistas as $index => $revista) {
-            echo ($index + 1) . ". Título: " . $revista->getTitulo() . ", Autor" . $revista->getAutor() . ", Año: " . $revista->getAnyo() . ", Paginas: " .  $revista->getPaginas() . ", Tematica: " . $revista->getTematica() . "<br>";
+            echo  "<li>" . ($index + 1) . " . Título: " . $revista->getTitulo() . " ,  Autor:" . $revista->getAutor() . " , Año: " . $revista->getAnyo() . " , Paginas: " .  $revista->getPaginas() . " , Tematica: " . $revista->getTematica() . "</li>";
         }
+        echo "</ul>";
+    } */
+
+    public function leerRevistas(){
+        return $this->revistas;
     }
 
     // actualizar: Modificar un libro por índice
     public function actualizarLibro(int $index, string $newTitulo, string $newAutor, int $newAnyo, int $newPaginas)
     {
         if (!isset($this->libros[$index])) {
-            echo "Libro no encontrado.<br>";
+            echo "Libro no encontrado";
             return;
         }
 
@@ -103,16 +116,15 @@ class Manager
         $libro->setAutor($newAutor);
         $libro->setAnyo($newAnyo);
         $libro->setPaginas($newPaginas);
-        echo "Libro actualizado correctamente . <br>";
+        echo "Libro actualizado correctamente";
         $this->guardarLibros();
-
     }
 
     // actualizar: Modificar una revista por índice
     public function actualizarRevista(int $index, string $newTitulo, string $newAutor, int $newAnyo, int $newPaginas, string $newTematica)
     {
         if (!isset($this->revistas[$index])) {
-            echo "Revista no encontrado.<br>";
+            echo "Revista no encontrado";
             return;
         }
 
@@ -122,16 +134,15 @@ class Manager
         $revista->setAnyo($newAnyo);
         $revista->setPaginas($newPaginas);
         $revista->setTematica($newTematica);
-        echo "Revista actualizada correctamente . <br>";
+        echo "Revista actualizada correctamente";
         $this->guardarRevistas();
     }
 
     /*-----------------------------------------------------------------------*/
-    
+
     public function eliminarLibro(int $index): void
     {
-        if (isset($this->libros[$index])) 
-        {
+        if (isset($this->libros[$index])) {
             unset($this->libros[$index]);
             $this->libros = array_values($this->libros);
             $this->guardarLibros();
@@ -139,11 +150,10 @@ class Manager
     }
 
     /*-----------------------------------------------------------------------*/
-    
+
     public function eliminarRevista(int $index): void
     {
-        if (isset($this->revistas[$index])) 
-        {
+        if (isset($this->revistas[$index])) {
             unset($this->revistas[$index]);
             $this->revistas = array_values($this->revistas);
             $this->guardarRevistas();
