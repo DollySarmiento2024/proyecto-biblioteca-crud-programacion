@@ -1,0 +1,16 @@
+[
+    {
+        "titulo": "Letras Libres",
+        "autor": "Enrique Krauze",
+        "anyo": 1999,
+        "paginas": 100,
+        "tematica": "entrevistas"
+    },
+    {
+        "titulo": "The Effect of Neuromarketing Techniques on Consumer Behavior",
+        "autor": "Ariely, D. & Berns",
+        "anyo": 2010,
+        "paginas": 233,
+        "tematica": "Neuromarketing"
+    }
+]

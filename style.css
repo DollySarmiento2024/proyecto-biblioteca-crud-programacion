@@ -87,3 +87,7 @@ li p {
 .button:hover{
     background-color: purple;
 }
+
+span {
+    font-weight: bold;
+}

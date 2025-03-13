@@ -7,8 +7,8 @@ class Manager
 {
     private array $libros = [];
     private array $revistas = [];
-    private string $filePathLibros = 'datos_libros.json';
-    private string $filePathRevistas = 'datos_revistas.json';
+    private string $filePathLibros = 'data/datos_libros.json';
+    private string $filePathRevistas = 'data/datos_revistas.json';
 
     public function __construct()
     {
