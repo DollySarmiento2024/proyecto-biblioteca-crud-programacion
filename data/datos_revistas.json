@@ -12,5 +12,54 @@
         "anyo": 2010,
         "paginas": 233,
         "tematica": "Neuromarketing"
+    },
+    {
+        "titulo": "Time",
+        "autor": "Varios autores",
+        "anyo": 1923,
+        "paginas": 70,
+        "tematica": "Noticias"
+    },
+    {
+        "titulo": "Vogue",
+        "autor": "Varios autores",
+        "anyo": 1892,
+        "paginas": 250,
+        "tematica": "Moda"
+    },
+    {
+        "titulo": "Scientific American",
+        "autor": "Varios autores",
+        "anyo": 1845,
+        "paginas": 70,
+        "tematica": "Ciencia"
+    },
+    {
+        "titulo": "The Economist",
+        "autor": "Varios autores",
+        "anyo": 1843,
+        "paginas": 90,
+        "tematica": "Pol\u00edtica"
+    },
+    {
+        "titulo": "Elle",
+        "autor": "Varios autores",
+        "anyo": 1945,
+        "paginas": 200,
+        "tematica": "Moda"
+    },
+    {
+        "titulo": "Harvard Business Review",
+        "autor": "Varios autores",
+        "anyo": 1922,
+        "paginas": 80,
+        "tematica": "Negocios"
+    },
+    {
+        "titulo": "The Atlantic",
+        "autor": "Varios autores",
+        "anyo": 1857,
+        "paginas": 100,
+        "tematica": "Cultura"
     }
 ]

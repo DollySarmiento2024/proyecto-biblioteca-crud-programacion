@@ -91,3 +91,10 @@ li p {
 span {
     font-weight: bold;
 }
+
+.paginacion {
+    margin-top: 20px; 
+    text-align: center;
+}
+
+

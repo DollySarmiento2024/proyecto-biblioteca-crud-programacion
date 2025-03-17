@@ -95,9 +95,23 @@
 LIBROS
 1. Título: Cien Años de Soledad, Autor: Gabriel García Márquez, Año: 1967, paginas: 496
 2. Título: Don Quijote de la Mancha, Autor: Miguel de Cervantes, Año: 1605, paginas: 462  
+3. Titulo: 1984, Autor: George Orwell, Año: 1949, Paginas: 328
+4. Titulo: El gran Gatsby, Autor: F. Scott Fitzgerald, Año: 1925, Paginas: 180
+5. Titulo: Orgullo y prejuicio, Autor: Jane Austen, Año: 1813, Paginas: 432
+6. Titulo: Matar a un ruiseñor, Autor: Harper Lee, Año: 1960, Paginas: 281
+7. Titulo: El Hobbit, Autor: J.R.R. Tolkien, Año: 1937, Paginas: 310
+8. Titulo: La sombra del viento, Autor: Carlos Ruiz Zafón, Año: 2001, Paginas: 576
+9. Titulo: Los detectives salvajes, Autor: Roberto Bolaño, Año: 1998, Paginas: 576
+
 
 REVISTAS
 1. Título: "Letras Libres", autor: "Enrique Krauze", Año: 1999, paginas: 100, tematica: "entrevistas"
 2. Título: "The Effect of Neuromarketing Techniques on Consumer Behavior", Autor: "Ariely, D. & Berns", anyo: 2010, "paginas": 233, tematica: "Neuromarketing"
-
+3. Titulo: Time, Autor: Varios autores, Año: 1923, Paginas: 70, Tematica: Noticias
+4. Titulo: Vogue, Autor: Varios autores, Año: 1892, Paginas: 250, Tematica: Moda
+5. Titulo: Scientific American, Autor: Varios autores, Año: 1845, Paginas: 70, Tematica: Ciencia
+6. Titulo: The Economist, Autor: Varios autores, Año: 1843, Paginas: 90, Tematica: Política
+7. Titulo: Elle, Autor: Varios autores, Año: 1945, Paginas: 200, Tematica: Moda
+8. Titulo: Harvard Business Review, Autor: Varios autores, Año: 1922, Paginas: 80, Tematica: Negocios
+9. Titulo: The Atlantic, Autor: Varios autores, Año: 1857, Paginas: 100, Tematica: Cultura
 -->

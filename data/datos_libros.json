@@ -4,5 +4,53 @@
         "autor": "Miguel de Cervantes",
         "anyo": 1605,
         "paginas": 462
+    },
+    {
+        "titulo": " Cien a\u00f1os de soledad",
+        "autor": "Gabriel Garc\u00eda M\u00e1rquez",
+        "anyo": 1967,
+        "paginas": 417
+    },
+    {
+        "titulo": "1984",
+        "autor": "George Orwell",
+        "anyo": 1949,
+        "paginas": 328
+    },
+    {
+        "titulo": "El gran Gatsby",
+        "autor": "F. Scott Fitzgerald",
+        "anyo": 1925,
+        "paginas": 180
+    },
+    {
+        "titulo": "Orgullo y prejuicio",
+        "autor": "Jane Austen",
+        "anyo": 1813,
+        "paginas": 432
+    },
+    {
+        "titulo": "Matar a un ruise\u00f1or",
+        "autor": "Harper Lee",
+        "anyo": 1960,
+        "paginas": 281
+    },
+    {
+        "titulo": "El Hobbit",
+        "autor": "J.R.R. Tolkien",
+        "anyo": 1937,
+        "paginas": 310
+    },
+    {
+        "titulo": "La sombra del viento",
+        "autor": "Carlos Ruiz Zaf\u00f3n",
+        "anyo": 2001,
+        "paginas": 576
+    },
+    {
+        "titulo": "Los detectives salvajes",
+        "autor": "Roberto Bola\u00f1o",
+        "anyo": 1998,
+        "paginas": 576
     }
 ]
